@@ -1,9 +1,8 @@
 <div>
-    <p id="products"></p>
+    <h1>Productos</h1>
+    {{!-- <p id="products"></p> --}}
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="/src/public/js/home.js"></script>
-<script>
-    const sockets=io.connect("http://localhost:8080/",{forceNew:true})
-</script>
+{{#each products}}
+    <p>{{title}} ${{price}}</p>
+{{/each}}
