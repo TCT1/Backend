@@ -1,11 +1,11 @@
 import { Router } from "express";
-import Products from '../dao/dbManager/product.manager.js'
+import cartP from "../dao/dbManager/cartP.manager.js";
 
 const router = Router()
-const productsManager = new Products()
+const cartProductsManager = new cartP()
 
 router.get('/',async(req,res)=>{
-    let products = await productsManager.getAll()
+    let products = await cartProductsManager.getAll()
 
     if(!products) return res.status(500).send({status:"error:",error:"No pude traer información"})
 
@@ -13,11 +13,11 @@ router.get('/',async(req,res)=>{
 })
 
 router.post('/',async(req,res)=>{
-    const {title,description,price,img} = req.body
+    const {title,quantity,price,img} = req.body
     
-    let result =await productsManager.saveProduct({
+    let result =await cartProductsManager.saveProduct({
         title,
-        description,
+        quantity,
         price,
         img
     })
