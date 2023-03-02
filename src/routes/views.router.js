@@ -6,6 +6,14 @@ const router = Router()
 const productsManager = new Products()
 const cartPManager = new cartProducts() 
 
+router.get('/session/register',(req,res)=>{
+    res.render('register')
+})
+
+router.get('/session/login',(req,res)=>{
+    res.render('login')
+})
+
 router.get('/products',async(req,res)=>{
     let products = await productsManager.getAll()
     console.log(products)
