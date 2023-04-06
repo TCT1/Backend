@@ -1,8 +1,8 @@
 
 <h1>Logueate</h1>
-<form id="loginForm">
+<form action="/session/login" method="POST"id="loginForm">
     <label>Correo electrónico</label>
-    <input name="email">
+    <input type="email" name="email">
     <label>Contraseña</label>
     <input type="password" name="password">
     <input type="submit">
@@ -10,12 +10,6 @@
 
 <p>Registrate es gratis !!!  
 <br>    
-<a href="/register">Registrate</a></p>
+<a href="/session/register">Registrate</a></p>
 <br>
-<script src="/js/login.js"></script>
-
-
-<p>Olvidaste tu Contraseña Recuperala Aquí!  
-<br>    
-<a href="/reregister">!!!!</a></p>
-<br>
+<script type="module" src="/authenticate.js"></script>
