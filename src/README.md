@@ -15,4 +15,10 @@ Como resultado de esto, en la ejecución arroja los siguientes errores:
 GET http://localhost:8080/routes/sessions.router.js net::ERR_ABORTED 404 (Not Found)    authenticate.js:1       
 GET http://localhost:8080/dao/models/user.model.js net::ERR_ABORTED 404 (Not Found)     authenticate.js:4
 
+
+Variables de entorno del archivo .env:
+
+MONGO_DB='mongodb+srv://Leonardo:champion08@codercluster.0g0vp2u.mongodb.net/?retryWrites=true&w=majority'
+
+
 Nota: Los demás scripts que no son mencionados en el apartado de organización son aquellos que no presentan errores y que no han sido modificados ni requeridos para esta entrega
