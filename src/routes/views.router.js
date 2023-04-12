@@ -13,7 +13,9 @@ router.get('/register',(req,res)=>{
     res.render('register')
 })
 
-router.post('/login',loginCtrl)
+router.post('/login',loginCtrl,(req,res)=>{
+    res.render('login')
+})
 
 router.get('/products',async(req,res)=>{
     let products = await productsManager.getAll()

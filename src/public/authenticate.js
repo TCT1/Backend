@@ -1,5 +1,6 @@
 import {encrypt} from "../routes/sessions.router.js"
 import {compare} from "../routes/sessions.router.js"
+
 import userModel from '../dao/models/user.model.js'
 
 export const loginCtrl=async(req,res)=>{

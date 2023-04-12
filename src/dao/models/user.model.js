@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const collection = 'users'
 const schema = new mongoose.Schema({
     first_name:{type:String,required: true},
