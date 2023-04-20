@@ -11,13 +11,24 @@ import passport from "passport";
 import dotenv from 'dotenv'
 import initPassport from "./config/passport.config.js";
 import cookieParser from "cookie-parser";
+import { addLogger } from "./logger.js";
 
 dotenv.config()
 const app = express()
 const MONGO_DB = process.env.MONGO_DB
 console.log(`**** ${MONGO_DB} ****`)
+mongoose.connect(MONGO_DB,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+},(err,res)=>{
+    if(!err){
+        console.log('**** MONGO SUCCESSFULLY CONNECTED ****')
+    }
+    else{
+        console.log('**** MONGO CONNECTION FAILED ****')
+    }
+})
 
-const connection = mongoose.connect(MONGO_DB)
 app.use(session({
     store:MongoStore.create({
         mongoUrl:MONGO_DB,
@@ -43,9 +54,13 @@ app.use(cookieParser('SecretCoder'))
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(addLogger)
+app.get('/',(req,res)=>{
+    req.logger.warning('Alerta!')
+    res.send({messagge:"Probando logger"})
+})
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 
 app.use('/api/products',productsRouter)
-
-const server = app.listen(8080,()=>console.log('Server arriba: 8080'))
+app.listen(8080,()=>console.log('Server arriba: 8080'))

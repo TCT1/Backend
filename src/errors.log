@@ -1,0 +1,4 @@
+{"level":"warn","message":"Alerta!"}
+fatal: GET con / - 00:05:24
+fatal: GET con / - 00:08:07
+warning: Alerta!

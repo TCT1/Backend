@@ -6,16 +6,18 @@ const router = Router()
 const productsManager = new Products()
 const cartPManager = new cartProducts() 
 
-import {loginCtrl,registerCtrl} from '../public/authenticate.js'
+import {loginCtrl,registerCtrl} from '../authenticate.js'
 
 router.post('/register',registerCtrl)
 router.get('/register',(req,res)=>{
     res.render('register')
 })
 
-router.post('/login',loginCtrl,(req,res)=>{
-    res.render('login')
-})
+router.post('/login',loginCtrl)
+/* router.get('/login',(req,res)=>{
+    res.render('register')
+}) */
+
 
 router.get('/products',async(req,res)=>{
     let products = await productsManager.getAll()

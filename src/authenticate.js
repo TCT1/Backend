@@ -1,12 +1,11 @@
-import {encrypt} from "../routes/sessions.router.js"
-import {compare} from "../routes/sessions.router.js"
+import { encrypt,compare } from "./routes/sessions.router.js"
+import appuserModel from './dao/models/user.model.js'
+import productModel from './dao/models/product.model.js'
 
-import userModel from '../dao/models/user.model.js'
-
-export const loginCtrl=async(req,res)=>{
+const loginCtrl=async(req,res)=>{
     try{
         const {email,password}=req.body
-        const user=await userModel.findOne({email})
+        const user=await appuserModel.findOne({email})
         if(!user){
             res.status(404)
             res.send({error:'User not found'})
@@ -21,21 +20,25 @@ export const loginCtrl=async(req,res)=>{
             return
         }
     }catch(error){
-        console.log('error')
+        console.log('Error de inicio de sesión')
+        res.send(error)
     }
 }
 
-export const registerCtrl=async(req,res)=>{
+const registerCtrl=async(req,res)=>{
     try{
-        const{email,password}=req.body
+        const{email,password,name}=req.body
         const passwordHash=await encrypt(password)
-        const registerUser= await userModel.create({
-            first_name,
+        const registerUser= await appuserModel.create({
             email,
+            name,
             password:passwordHash
         })
-        res.send({data:registerUser})
+        
+        res.send({data:registerUser, messagge:'Success'})
     }catch(error){
         res.send(error)
     }
 }
+
+export {registerCtrl,loginCtrl}
