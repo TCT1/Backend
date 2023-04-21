@@ -1,24 +1,29 @@
 #Proyecto Backend. Entrega actual: Tercera entrega del proyecto final
 
-Organización:
+##Organización:
 
 views.router.js -- Maneja los endpoints del proyecto
 sessions.router.js -- Genera las funciones de encriptación y comparación de contraseñas con bcrypt
 authenticate.js -- Tiene los métodos que manejan el login y register ocupando las funciones del sessions.router.js
+logger.js - maneja el registro de errores y logs
+
+##Rutas:
+./ - Ejecución del logger
+./register - Presenta el formulario de registro de sesión
+./login - Presenta el formulario de inicio de sesión
+./products - Muestra la lista de los productos del e-commerce
 
 
-Registro de errores:
 
-Al parecer el script authenticate.js no interpreta las importaciones de los otros scripts tales como userModel y las funciones "encrypt" y "compare" de session.router.js
+##Registro de errores:
 
-Como resultado de esto, en la ejecución arroja los siguientes errores:
-GET http://localhost:8080/routes/sessions.router.js net::ERR_ABORTED 404 (Not Found)    authenticate.js:1       
-GET http://localhost:8080/dao/models/user.model.js net::ERR_ABORTED 404 (Not Found)     authenticate.js:4
+Se presentó un error el cual hace que el req.body no reciba la información proporcionada por medio del Postman.
+El error se genera en la función "registerCtrl" del script authenticate.js, en donde se ejecuta de manera adecuada solamente hasta el try
 
 
-Variables de entorno del archivo .env:
+##Variables de entorno del archivo .env:
 
 MONGO_DB='mongodb+srv://Leonardo:champion08@codercluster.0g0vp2u.mongodb.net/?retryWrites=true&w=majority'
 
 
-Nota: Los demás scripts que no son mencionados en el apartado de organización son aquellos que no presentan errores y que no han sido modificados ni requeridos para esta entrega
+###Nota: Los demás scripts que no son mencionados en el apartado de organización son aquellos que no presentan errores y que no han sido modificados ni requeridos para esta entrega

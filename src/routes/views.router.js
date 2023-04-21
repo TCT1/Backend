@@ -14,9 +14,9 @@ router.get('/register',(req,res)=>{
 })
 
 router.post('/login',loginCtrl)
-/* router.get('/login',(req,res)=>{
-    res.render('register')
-}) */
+router.get('/login',(req,res)=>{
+    res.render('login')
+})
 
 
 router.get('/products',async(req,res)=>{
