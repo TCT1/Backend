@@ -1,0 +1,60 @@
+paths:
+  /api/users:
+    get:
+      summary: Obtener la lista de productos
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Los productos son recolectados de la DB y obtenidos correctamente
+        "500":
+          description: Error al obtener los productos
+    post:
+      summary: Actualizar la lista de productos
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Se agregaron las nuevas entradas de productos a la DB
+        "500":
+          description: Error al actualizar los productos
+    put:
+      summary: Insertar la lista de productos
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Respuesta correcta por parte de la DB
+        "500":
+          description: Error al insertar los usuarios
+    delete:
+      summary: Eliminar un elemento de la lista de productos
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Se eliminaron correctamente los productos deseados de la DB
+        "500":
+          description: Error al eliminar los productos
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        title:
+          type: String
+          description: Título del producto obtenido
+        description:
+          type: String 
+          description: Descripción breve de las características del producto
+        price:
+          type: Int 
+          description: Precio del producto
+        img:
+          type: String 
+          description: Imagen del producto
+      example:
+        title: iPhone 10
+        description: Celular Apple gama alta
+        price: 15000
+        img: logo.png

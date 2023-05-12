@@ -12,6 +12,8 @@ import dotenv from 'dotenv'
 import initPassport from "./config/passport.config.js";
 import cookieParser from "cookie-parser";
 import { addLogger } from "./logger.js";
+import swaggerJsdoc from 'swagger-jsdoc'
+import swaggerUiExpress from 'swagger-ui-express'
 
 dotenv.config()
 const app = express()
@@ -28,6 +30,20 @@ mongoose.connect(MONGO_DB,{
         console.log('**** MONGO CONNECTION FAILED ****')
     }
 })
+
+const swaggerOption={
+    definition:{
+        openapi:'3.0.1',
+        info:{
+            title:'Documentación de proyecto de e-commerce',
+            description:'Funciones de manejo de productos'
+        }
+    },
+    apis:[`./docs/**.yaml`]
+}
+
+const specs=swaggerJsdoc(swaggerOption)
+app.use('/apidocs',swaggerUiExpress.serve,swaggerUiExpress.setup(specs))
 
 app.use(session({
     store:MongoStore.create({
@@ -46,6 +62,7 @@ app.set('views', __dirname + "/views");
 app.set('view engine', "handlebars");
 
 app.use('/', viewRouter)
+app.use('/api/products',productsRouter)
 
 app.use(express.static('public'))
 app.use(express.json());

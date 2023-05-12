@@ -1,4 +1,4 @@
-#Proyecto Backend. Entrega actual: Tercera entrega del proyecto final
+#Proyecto Backend. Entrega actual: Documentación de API
 
 ##Organización:
 
@@ -12,6 +12,7 @@ logger.js - maneja el registro de errores y logs
 ./register - Presenta el formulario de registro de sesión
 ./login - Presenta el formulario de inicio de sesión
 ./products - Muestra la lista de los productos del e-commerce
+./apidocs - Contiene la documentación del proyecto por medio de Swagger
 
 
 

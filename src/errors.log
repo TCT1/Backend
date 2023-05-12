@@ -8,3 +8,5 @@ fatal: GET con / - 21:59:05
 warning: Alerta!
 fatal: GET con /favicon.ico - 21:59:06
 fatal: GET con /login - 22:00:39
+fatal: GET con /favicon.ico - 19:52:59
+fatal: GET con /api/users - 19:55:13
